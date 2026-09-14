@@ -50,20 +50,30 @@ def open_log():
     return logf
 
 def write_log(message: List[str]):
+    """
+    This function writes a list of messages to the log file.
+
+    :param message: List of strings to be written to the log file.
+    :return: None
+    """
     logf = open_log()
     logf.writelines(message)
+    # time_end = datetime.datetime.now()
+    # logf.write("Script ended at: %s\n" % time_end)
+    logf.write("\n")
     logf.close()
 
 # we make sure the script runs only when executed directly, not when imported
 if __name__ == "__main__":
+    # record the start time of the script
     time_start = datetime.datetime.now()
-    log_mesage.append("Script started at: %s\n" % time_start)
-    a = int(input("Enter an integer: "))
-    sum_list = [i for i in range(0,a,5)]
+    log_mesage.append("============================================\n\nScript started at: %s\n" % time_start)
+    # now we get the final value from the user to build a list with step values of 5 beginning from 0
+    final_value = int(input("Enter an integer: "))
+    # This below syntax is called a list comprehension, which is a concise way to create lists in Python
+    sum_list = [step_value for step_value in range(0,final_value,5)]
     loop_through_sum_list(sum_list)
-    decrement_until_zero(a)
-    # time_end = datetime.datetime.now()
-    # log_mesage.append("Script ended at: %s\n" % time_end)
+    decrement_until_zero(final_value)
     write_log(log_mesage)
     sys.exit()
     
