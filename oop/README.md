@@ -2,6 +2,8 @@
 
 Two beginner classes that build on the [`basics`](../basics/README.md) folder. You already know variables, `if`, lists, loops, and functions. Here you will learn to bundle them together into **objects**.
 
+This folder contains lesson examples and take-home exercises.
+
 ## Getting Started
 
 Run from this folder:
@@ -31,7 +33,7 @@ Script: [`class1_classes_objects.py`](class1_classes_objects.py)
 
 ### 1.1 The Problem
 
-Imagine tracking a bank account with loose variables and functions:
+Suppose you need to represent a bank account using loose variables and functions:
 
 ```python
 owner = "Asha"
@@ -104,12 +106,12 @@ def withdraw(self, amount: float):
 
 The object protects itself with the same `if` logic you already know.
 
-### Guided Exercises (Class 1)
+### Take-Home Exercises (Class 1)
 
 1. Run the script. Before you do, predict the final balance of `asha` and `ravi`.
 2. Create a third account for yourself with a starting balance, deposit into it, and add it to the `accounts` list. Check the total.
 3. Add a method `is_empty(self)` that returns `True` when the balance is `0`. Use it in an `if` statement.
-4. Create a new class `Book` with attributes `title`, `pages`, and `pages_read` (starts at `0`). Add a method `read(self, count)` that adds to `pages_read` but never goes past `pages`. Add a method `progress(self)` that prints the percentage read.
+4. Create a `Book` class with `title` and `pages` attributes. Add a method that prints a short description of the book.
 5. Bonus: What happens if you forget `self` in `def show_balance():`? Try it and read the error.
 
 ---
@@ -165,39 +167,39 @@ A user of `BankAccount` needs `deposit()`, `withdraw()`, and `describe()`. They 
 
 For now, treat abstraction as a design habit. Give a class a small, clear set of methods and keep the details inside. (Python has special syntax to force subclasses to provide certain methods. That is for a later class.)
 
-### Guided Exercises (Class 2)
+### Take-Home Exercises (Class 2)
 
 1. Run the script. Which line prints the broken balance, and why does Python allow it?
 2. Change `rate` in `SavingsAccount("Ravi", 1200)` to `0.12`. Predict the new `month_end` result, then run it.
 3. Create a `StudentAccount(BankAccount)` whose `withdraw` refuses any amount over `50`. Hint: check the amount, then call `super().withdraw(amount)`.
 4. Add `StudentAccount` to the list in `demo_polymorphism`. Does the loop need to change?
-5. Add a method `show_history(self)` to `BankAccount` that loops over `self._history` and prints each entry. Which principle is this an example of?
+5. Add a `describe(self)` method to `StudentAccount` that returns a sentence describing the account. Override it in a second account subclass and compare the output.
 
 ---
 
-# Final Task: Student Grade Tracker
+# Take-Home Final Task: Shape Area Examples
 
-Reuse what you learned in both phases.
+Use a small set of shape objects to practice inheritance and polymorphism. This is a console example, not an application that stores or tracks records.
 
 **Requirements**
 
-1. Create a `Student` class with a `name` and a list of `grades` (starts empty).
-2. Add `add_grade(self, grade)`. Only accept grades from `0` to `100`; otherwise print a message (conditionals).
-3. Add `average(self)` using a `for` loop. Return `0` if there are no grades.
-4. Add `status(self)` that returns `"pass"` when the average is at least `40`, otherwise `"fail"`.
-5. Create `HonorsStudent(Student)` that needs an average of `60` to pass. Override only what you need.
-6. In an `if __name__ == "__main__":` block, create a list holding one `Student` and one `HonorsStudent`. Use `input()` and a `while` loop to read grades for each student until the user types `-1`.
-7. Loop over the list and print each student's name, average, and status. The loop must not check which kind of student it is.
+1. Create a `Shape` class with a `describe(self)` method.
+2. Create a `Rectangle(Shape)` class with `width` and `height` attributes. Override `describe(self)` to include its dimensions and area.
+3. Create a `Circle(Shape)` class with a `radius` attribute. Override `describe(self)` to include its radius and area. Use `3.14` for pi.
+4. Create one rectangle and one circle, put them in a list, then loop over the list and call `describe()` on each object.
+5. Do not use an `if` statement to check the object's type in the loop. Each class should provide its own description.
 
 **Checklist**
 
-- [ ] Attributes hold the data (variables)
-- [ ] Methods hold the behavior (functions)
-- [ ] Conditionals guard `add_grade` and `status`
-- [ ] Inheritance used for `HonorsStudent`
-- [ ] Polymorphism: one loop, both student types
+- [ ] Attributes store each shape's dimensions.
+- [ ] Methods describe each object and calculate its area.
+- [ ] `Rectangle` and `Circle` inherit from `Shape`.
+- [ ] Both subclasses override `describe()`.
+- [ ] One loop works with both object types.
 
-A sample solution is in [`final_task_solution.py`](final_task_solution.py). Try it yourself first.
+Try the task before looking at the optional sample solution in [`final_task_solution.py`](final_task_solution.py).
+
+---
 
 ## Example Files
 
@@ -205,7 +207,7 @@ A sample solution is in [`final_task_solution.py`](final_task_solution.py). Try 
 | --- | --- |
 | [`class1_classes_objects.py`](class1_classes_objects.py) | Classes, objects, `__init__`, `self`, attributes, methods |
 | [`class2_core_principles.py`](class2_core_principles.py) | Encapsulation, inheritance, polymorphism, abstraction |
-| [`final_task_solution.py`](final_task_solution.py) | Sample solution for the final task |
+| [`final_task_solution.py`](final_task_solution.py) | Sample solution for the shape area task |
 
 ## Teaching Notes
 
