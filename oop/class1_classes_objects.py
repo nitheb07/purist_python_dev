@@ -41,7 +41,7 @@ class BankAccount:
 
     def withdraw(self, amount: float):
         if amount > self.balance:
-            print("%s: not enough money (balance %.2f)" % (self.owner, self.balance))
+            print("%s: not enough money (balance %.2f)\n Please make more money" % (self.owner, self.balance))
         elif amount <= 0:
             print("Withdrawal must be more than 0.")
         else:
