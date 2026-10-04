@@ -28,7 +28,7 @@ class BankAccount:
             self._balance -= amount
             self._history.append("withdraw %.2f" % amount)
         else:
-            print("Withdrawal refused. Try again later.")
+            print("Withdrawal refused: amount must be positive and not exceed the balance.")
 
     def month_end(self):
         """Hook that subclasses can change. The base account does nothing."""
