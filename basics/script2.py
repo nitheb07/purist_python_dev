@@ -24,7 +24,7 @@ def loop_through_sum_list(v_list: List[int]):
     except Exception as e:
         error_log = traceback.format_exc()
         log_mesage.append(error_log)
-        messagebox.showerror("Error", "An error occurred: %s" % e)
+        messagebox.showerror("Error", "An error occurred: %s\n See log for details." % e)
 
 def decrement_until_zero(value: int):
     """
